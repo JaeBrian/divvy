@@ -11,7 +11,7 @@ const App = () => {
   const mockSubCardInfo = {
     subscriptionName: 'Netflix',
     planPrice: '$15.99/month',
-    dueDate: '2023-12-30',
+    dueDate: '12-30-2024',
     members: [
       { name: 'Brian' },
       { name: 'Nancy' },
