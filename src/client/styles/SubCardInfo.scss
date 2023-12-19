@@ -1,0 +1,42 @@
+.subcardinfo-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  height: 100vh;
+}
+
+.subscription-name {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.info-containers {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  gap: 50px;
+  margin-bottom: 20px;
+
+  .plan-price,
+  .due-date {
+    padding: 10px;
+    border-radius: 5px;
+  }
+}
+
+.members-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100vw;
+
+  .member-row {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    width: 50vw;
+  }
+}

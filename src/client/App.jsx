@@ -6,6 +6,17 @@ import CustomPlan from './components/CustomPlan';
 import AddSub from './components/AddSub';
 import SubCardInfo from './components/SubCardInfo';
 const App = () => {
+  const mockSubCardInfo = {
+    subscriptionName: 'Netflix',
+    planPrice: '$15.99/month',
+    dueDate: '2023-12-30',
+    members: [
+      { name: 'Brian' },
+      { name: 'Nancy' },
+      { name: 'Sung' },
+      { name: 'Yvonne' },
+    ],
+  };
   return (
     <Router>
       <Routes>
@@ -13,7 +24,10 @@ const App = () => {
         <Route path="/subdash" element={<SubDash />} />
         <Route path="/customplan" element={<CustomPlan />} />
         <Route path="/addsub" element={<AddSub />} />
-        <Route path="/subcardinfo" element={<SubCardInfo />} />
+        <Route
+          path="/subcardinfo"
+          element={<SubCardInfo {...mockSubCardInfo} />}
+        />
       </Routes>
     </Router>
   );
