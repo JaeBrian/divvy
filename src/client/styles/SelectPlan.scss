@@ -1,0 +1,47 @@
+.selectplan {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10vh;
+}
+
+#htitle {
+  font-size: 6vw;
+  color: aliceblue;
+}
+
+.plan-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20vh;
+  gap: 5vw;
+}
+
+#netflix {
+  height: 25vh;
+  transition: transform 0.15s ease-in-out;
+}
+
+#disney {
+  height: 25vh;
+  transition: transform 0.15s ease-in-out;
+}
+
+#crunchy {
+  height: 28vh;
+  transition: transform 0.15s ease-in-out;
+}
+
+#custom {
+  font-size: 9vh;
+  color: greenyellow;
+  transition: transform 0.15s ease-in-out;
+}
+
+#netflix:hover,
+#disney:hover,
+#crunchy:hover,
+#custom:hover {
+  transform: scale(1.08, 1.08);
+}
