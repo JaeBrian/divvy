@@ -1,0 +1,47 @@
+.profile-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  height: 50vh;
+  width: 50vw;
+  text-align: center;
+
+  .profile-input-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  p {
+    margin-top: 1rem;
+  }
+
+  input {
+    width: 10vw;
+    margin-top: 1rem;
+    border: 1px solid #fff;
+  }
+
+  input::placeholder {
+    text-align: center;
+    border: 1px solid #fff;
+  }
+
+  button {
+    width: 10vw;
+    margin-top: 1rem;
+    border: 1px solid #fff;
+    transition: all 0.5s ease;
+    cursor: pointer;
+  }
+
+  button:hover {
+    border: 1px solid #f8c8dc;
+    color: #f8c8dc;
+    background-color: #fff;
+    transform: scale(1.1);
+  }
+}
