@@ -11,6 +11,7 @@ const user = {
 
 // Profile "Modal" showing username, email, save, and logout
 const Profile = () => {
+  const [isModalOpen, setIsModalOpen] = useState(true);
   const [isEditing, setIsEditing] = useState(false);
   const [editedUsername, setEditedUsername] = useState('');
   const [editedEmail, setEditedEmail] = useState('');
@@ -53,6 +54,10 @@ const Profile = () => {
     }
   };
 
+  const handleBackButton = () => {
+    isEditing ? setIsEditing(false) : setIsModalOpen(false);
+  };
+
   // 'logout' button handler
   const handleLogout = async () => {
     // do we need logout route in backend?
@@ -69,51 +74,57 @@ const Profile = () => {
   };
 
   return (
-    // need to update with redux states
-    <div className="profile-container">
-      {/* may need to add default/fallback picture to the src */}
-      {/* <img
+    isModalOpen && (
+      // need to update with redux states
+      <div className="profile-container">
+        {/* may need to add default/fallback picture to the src */}
+        {/* <img
         src={user.picture}
         alt="profile picture"
         className="profile-picture"
       /> */}
 
-      {isEditing ? (
-        <div className="profile-edit-container">
-          <div className="profile-input-container">
-            <input
-              type="text"
-              value={editedUsername}
-              onChange={(e) => setEditedUsername(e.target.value)}
-              placeholder="New Username"
-            />
-            <input
-              type="email"
-              value={editedEmail}
-              onChange={(e) => setEditedEmail(e.target.value)}
-              placeholder="New Email"
+        {isEditing ? (
+          <div className="profile-edit-container">
+            <div className="profile-input-container">
+              <input
+                type="text"
+                value={editedUsername}
+                onChange={(e) => setEditedUsername(e.target.value)}
+                placeholder="New Username"
+              />
+              <input
+                type="email"
+                value={editedEmail}
+                onChange={(e) => setEditedEmail(e.target.value)}
+                placeholder="New Email"
+              />
+            </div>
+            <Button
+              text="Save"
+              onClick={handleSaveButtonClick}
+              className="profile-save-button"
             />
           </div>
-          <Button
-            text="Save"
-            onClick={handleSaveButtonClick}
-            className="profile-save-button"
-          />
-        </div>
-      ) : (
-        <div>
-          <p>Username: {user.username}</p>
-          <p>Email: {user.email}</p>
-          <Button text="Edit" onClick={() => setIsEditing(true)} />
-        </div>
-      )}
-
-      <Button
-        text="Log Out"
-        onClick={handleLogout}
-        className="profile-logout-button"
-      />
-    </div>
+        ) : (
+          <div>
+            <p>Username: {user.username}</p>
+            <p>Email: {user.email}</p>
+            <Button text="Edit" onClick={() => setIsEditing(true)} />
+          </div>
+        )}
+        <Button
+          text="Back"
+          onClick={handleBackButton}
+          className="profile-back-button"
+        />
+        <Button
+          text="Log Out"
+          onClick={handleLogout}
+          className="profile-logout-button"
+        />
+      </div>
+    )
   );
 };
 
