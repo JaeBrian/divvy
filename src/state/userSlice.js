@@ -1,20 +1,19 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   user: {
     username: null,
     password: null,
     email: null,
-  }
-}
+  },
+};
 
 export const userSlice = createSlice({
-  
+  name: 'user',
   //functions => modify state by mutation
-})
+});
 
 //export const deconstructed functions here userSlice.actions
-
 
 // export const pokemonApi = createApi({
 //   reducerPath: 'pokemonApi',
