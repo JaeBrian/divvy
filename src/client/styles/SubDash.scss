@@ -1,0 +1,77 @@
+.title-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 8vh;
+}
+
+.title {
+  font-size: 5vw;
+  color: aliceblue;
+  margin-bottom: 3vh;
+}
+
+.card-containers {
+  height: 60vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2vw;
+  overflow-x: scroll;
+}
+
+.cards {
+  height: 30vw;
+  width: 50vh;
+  background-color: rgb(0, 0, 0);
+  border-radius: 1vw;
+  flex-shrink: 0; /* Prevents the cards from shrinking */
+  font-size: 2vw;
+  color: rgb(255, 255, 255);
+  display: flex;
+  align-items: center;
+  line-height: 10vh;
+  flex-direction: column;
+  justify-content: start;
+  box-shadow: 0 0 10px 1px #48abe0;
+  gap: 1.5vh;
+  transition: transform 0.2s ease-in-out;
+}
+
+.cards:hover {
+  transform: scale(1.02, 1.02);
+}
+
+.company {
+  cursor: pointer;
+}
+
+.member-cards {
+  width: 85%;
+  height: 12%;
+  border-radius: 5px;
+  border: 1px solid white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  line-height: 5vh;
+  border: none;
+  border: 1px solid white;
+}
+
+#name {
+  font-size: 65%;
+  margin-left: 1vw;
+}
+
+#paid {
+  height: 60%;
+  width: 9%;
+  margin-right: 1vw;
+  border-radius: 100px;
+  // border: 1px solid rgb(247, 45, 45);
+}
+
+#paid:hover {
+  transform: scale(1.1, 1.1);
+}

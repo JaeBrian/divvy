@@ -6,12 +6,21 @@ const initialState = {
     password: null,
     email: null,
   },
+  hasPaid: false,
 };
 
 export const userSlice = createSlice({
-  name: 'user',
-  //functions => modify state by mutation
+  name: 'userSlice',
+  initialState,
+  reducers: {
+    toggleHasPaid: (state) => {
+      state.hasPaid = !state.hasPaid;
+    },
+  },
 });
+
+export const { toggleHasPaid } = userSlice.actions;
+export default userSlice.reducer;
 
 //export const deconstructed functions here userSlice.actions
 
