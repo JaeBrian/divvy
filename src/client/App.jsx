@@ -6,6 +6,7 @@ import CustomPlan from './components/CustomPlan';
 import AddSub from './components/AddSub';
 import Profile from './components/Profile';
 import SubCardInfo from './components/SubCardInfo';
+import SelectPlan from './components/SelectPlan';
 const App = () => {
   return (
     <Router>
@@ -16,6 +17,7 @@ const App = () => {
         <Route path="/addsub" element={<AddSub />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/subcardinfo" element={<SubCardInfo />} />
+        <Route path="/selectplan" element={<SelectPlan />} />
       </Routes>
     </Router>
   );
