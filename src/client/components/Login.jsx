@@ -61,7 +61,9 @@ const Login = () => {
         />
       </div>
       <div className='footerContainer'>
-        Forgot password
+        <div className='footerText'>
+          Forgot password
+        </div>
         <input
           className='inputButton'
           type='button'

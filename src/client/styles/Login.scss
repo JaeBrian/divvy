@@ -1,4 +1,5 @@
 .mainContainer {
+  height: 900px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -30,4 +31,10 @@
 .footerContainer {
   display: flex;
   margin-top: 15px;
+}
+
+.footerText {
+  text-align: center;
+  margin-top: auto;
+  margin-bottom: auto;
 }
