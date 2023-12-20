@@ -1,21 +1,35 @@
-const models = require('./db')
+const models = require('./db');
 
 const modelController = {};
 
 modelController.login = (req, res, next) => {
-  l
-}
+  const { username, password } = req.body;
 
+  if (!username || !password) {
+    return res.status(400).send('Username and password are required');
+  }
+
+  models.User.findOne({ username })
+    .then((data) => {
+      if (data.password === password) {
+        res.locals.user = data;
+        return next();
+      }
+    })
+    .catch(() => {
+      return next({
+        log: 'oopsiesss',
+        message: {
+          err: 'uhhhohhh',
+          status: 500,
+        },
+      });
+    });
+};
 
 modelController.signup = (req, res, next) => {
-  const {
-    firstName,
-    lastName,
-    username,
-    email,
-    password,
-  } = req.body
-  
+  const { firstName, lastName, username, email, password } = req.body;
+
   models.User.create({
     firstName,
     lastName,
@@ -23,39 +37,146 @@ modelController.signup = (req, res, next) => {
     email,
     password,
   })
-.then((user) => {
-  return next();
-})
-.catch(() => {
-  return next({
-    log: 'oopsiesss',
-    message: {
-      err: 'uhhhohhh',
-      status: 500,
-    }
-  })
-})
+    .then((user) => {
+      return next();
+    })
+    .catch(() => {
+      return next({
+        log: 'oopsiesss',
+        message: {
+          err: 'uhhhohhh',
+          status: 500,
+        },
+      });
+    });
+};
 
-}
+modelController.editProfile = (req, res, next) => {
+  const { id } = req.params;
+  const { username, email } = req.body;
 
-modelController.editprofile = (req, res, next) => {
-  const { username,  }
-}
+  models.User.findByIdAndUpdate(id, { username, email })
+    .then((user) => {
+      res.status(200).json({ message: 'Profile updated successfully', user });
+    })
+    .catch((err) => next(err));
+};
 
-modelController.adduser = (req, res, next) => {
-  
-}
+modelController.getUser = (req, res, next) => {
+  const { id } = req.params;
 
-modelController.addsub = (req, res, next) => {
-  
-}
+  models.User.findById(id)
+    .then((user) => {
+      res.locals.user = user;
+      console.log(user);
+      return next();
+    })
+    .catch(() => {
+      return next({
+        log: 'error in get user',
+        message: {
+          err: 'uhhhohhh',
+          status: 500,
+        },
+      });
+    });
+};
 
-modelController.getsubscription = (req, res, next) => {
-  
-}
+//   x      v
+// user -> subs -> members
+modelController.getSubscription = (req, res, next) => {
+  const { _id } = req.query;
+  const { username } = req.body;
 
-modelController.addsubscription = (req, res, next) => {
-  
-}
+  models.Member.create({ username })
+    .then((newMember) => {
+      return models.Subscription.findOneAndUpdate(
+        { _id },
+        { $push: { subscribers: newMember._id } },
+        { new: true }
+      );
+    })
+    .then((data) => {
+      res.locals.updatedSub = data;
+      return next();
+    })
+    .catch(() => {
+      return next({
+        log: 'error in getSubscription',
+        message: {
+          err: 'uhhhohhh',
+          status: 500,
+        },
+      });
+    });
+};
+
+modelController.addSubscription = (req, res, next) => {
+  const { planName, monthlyCost } = req.body;
+  const user = res.locals.user;
+
+  models.Subscription.create({ planName, monthlyCost })
+    .then((newSubscription) => {
+      return models.User.findByIdAndUpdate(
+        user._id,
+        { $push: { subscriptions: newSubscription } },
+        { new: true }
+      );
+    })
+    .then((updatedUser) => {
+      res.locals.newuser = updatedUser;
+      return next();
+    })
+    .catch(() => {
+      return next({
+        log: 'error in get user',
+        message: {
+          err: 'uhhhohhh',
+          status: 500,
+        },
+      });
+    });
+};
+
+modelController.returnSubscription = () => {
+  const { id } = req.query;
+
+  models.Subscription.findById(id)
+
+    .then((data) => {
+      res.locals.data = data.planName;
+      return next();
+    })
+
+    .catch(() => {
+      return next({
+        log: 'error in get subs',
+        message: {
+          err: 'uhhhohhh',
+          status: 500,
+        },
+      });
+    });
+};
+
+modelController.returnMember = () => {
+  const { id } = req.query;
+
+  models.Member.findById(id)
+    .then((data) => {
+      res.locals.member = data;
+      return next();
+    })
+
+    .catch(() => {
+      return next({
+        log: 'error in get member',
+        message: {
+          err: 'uhhhohhh',
+          status: 500,
+        },
+      });
+    });
+};
 
 module.exports = modelController;

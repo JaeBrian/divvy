@@ -4,12 +4,15 @@ mongoose.connection.once('open', () => {
   console.log('Connected to Database');
 });
 
+const URI =
+  'mongodb+srv://divvy:test123@cluster0.1pclsez.mongodb.net/?retryWrites=true&w=majority';
+
 const connectDB = async () => {
   try {
-    await mongoose.connect(process.env.MONGO_URI, {
+    await mongoose.connect(URI, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
-      dbName: process.env.MONGO_NAME,
+      dbName: 'divvy',
     });
   } catch (err) {
     console.log(`Error: ${err.message}`);
@@ -26,8 +29,8 @@ const userSchema = new Schema({
     required: true,
   },
   lastName: {
-    type: String, 
-    required: true
+    type: String,
+    required: true,
   },
   username: {
     type: String,
@@ -42,22 +45,32 @@ const userSchema = new Schema({
     type: String,
     required: true,
   },
-  subscriptions: [{type: String}]
-})
+  subscriptions: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Subscription',
+    },
+  ],
+});
 
 const User = mongoose.model('user', userSchema);
 
 //sub schema
 const subscriptionSchema = new Schema({
-    planName: {
-        type: String, 
-        required: true,
+  planName: {
+    type: String,
+    required: true,
+  },
+  monthlyCost: {
+    type: Number,
+  },
+  subscribers: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Member',
     },
-    monthlyCost: {
-      type: Number,
-    },
-    subscribers: [{type: String}],
-})
+  ],
+});
 
 const Subscription = mongoose.model('subscription', subscriptionSchema);
 
@@ -66,21 +79,21 @@ const memberSchema = new Schema({
   username: {
     type: String,
     required: true,
-    unique: true,
   },
   hasPaid: {
     type: Boolean,
+    default: false,
   },
-})
+});
 
 const Member = mongoose.model('member', memberSchema);
 
-connectDB()
+connectDB();
 
 module.exports = {
- User,
- Subscription,
- Member,
-}
+  User,
+  Subscription,
+  Member,
+};
 
 
