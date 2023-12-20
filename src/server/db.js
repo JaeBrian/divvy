@@ -48,7 +48,7 @@ const userSchema = new Schema({
   subscriptions: [
     {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'Subscription',
+      ref: 'subscription',
     },
   ],
 });
@@ -67,7 +67,7 @@ const subscriptionSchema = new Schema({
   subscribers: [
     {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'Member',
+      ref: 'member',
     },
   ],
 });
@@ -95,5 +95,3 @@ module.exports = {
   Subscription,
   Member,
 };
-
-
