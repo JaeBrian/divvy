@@ -25,7 +25,7 @@ const SubDash = () => {
   const mockdata = '65826df4ab2cedce32150a15';
 
   const user = useSelector((state) => state.userSlice.user);
-  //const loginid = useelector (state =? state.user.id)
+
   console.log('user', user);
   useEffect(() => {
     dispatch(fetchUser(mockdata));
@@ -49,3 +49,24 @@ const SubDash = () => {
 };
 
 export default SubDash;
+
+// user {
+//   subscriptions: [
+//     disney {subscribers: []}, netflix {subscribers: []}
+//   ]
+
+//   }
+// }
+
+// const subscriptions = user.subscriptions
+
+// // [
+// //     disney {subscribers: []},                            netflix {subscribers: []}
+//   // ]
+// //    V
+
+// subscriptions.map(subscription => {
+//   <SubCard subscription={subscriptions}/>
+//   <SubCard subscription={subscriptions}/>
+//   <SubCard subscription={subscriptions}/>
+// })
