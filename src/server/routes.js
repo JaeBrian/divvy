@@ -2,12 +2,12 @@ const express = require('express');
 const modelController = require('./controller');
 const router = express.Router();
 
-router.get('/login', modelController.login, (req, res) => {
+router.post('/login', modelController.login, (req, res) => {
   res.status(200).json(res.locals.user);
 });
 
 router.post('/signup', modelController.signup, (req, res) =>
-  res.status(200).json({})
+  res.status(200).json(res.locals.user)
 );
 
 router.get('/getuser/:id', modelController.getUser, (req, res) => {
@@ -29,13 +29,17 @@ router.get('/getsubscription', modelController.getSubscription, (req, res) =>
   res.status(200).json({})
 );
 
-router.get('/getsubname/:id', modelController.returnSubscription, (req, res) => {
-  res.status(200).json(res.locals.data)
-})
+router.get(
+  '/getsubname/:id',
+  modelController.returnSubscription,
+  (req, res) => {
+    res.status(200).json(res.locals.data);
+  }
+);
 
 router.get('/getmembername/:id', modelController.returnMember, (req, res) => {
-  res.status(200).json(res.locals.data)
-})
+  res.status(200).json(res.locals.data);
+});
 
 router.post(
   '/addsubscription/:id',

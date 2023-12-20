@@ -27,7 +27,11 @@ export const fetchUser = createAsyncThunk(
 // );
 
 const initialState = {
-  login: {},
+  login: {
+    username: null,
+    password: null,
+    loggedIn: false,
+  },
   user: {
     _id: null,
     firstName: null,
@@ -51,7 +55,7 @@ export const userSlice = createSlice({
     setIsModalOpen: (state) => {
       state.modalOpen = !state.modalOpen;
     },
-    setLoginInfo: (state) => {
+    setLoginInfo: (state, action) => {
       state.login = action.payload;
     },
     swapHasPaid: (state, action) => {
@@ -84,7 +88,8 @@ export const userSlice = createSlice({
   },
 });
 
-export const { toggleHasPaid, setIsModalOpen, swapHasPaid } = userSlice.actions;
+export const { toggleHasPaid, setIsModalOpen, setLoginInfo, swapHasPaid } =
+  userSlice.actions;
 export default userSlice.reducer;
 
 //export const deconstructed functions here userSlice.actions
