@@ -66,16 +66,23 @@ modelController.getUser = (req, res, next) => {
   const { id } = req.params;
 
   models.User.findById(id)
+    .populate({
+      path: 'subscriptions',
+      populate: {
+        path: 'subscribers',
+        model: 'member',
+      },
+    })
     .then((user) => {
       res.locals.user = user;
       console.log(user);
       return next();
     })
-    .catch(() => {
+    .catch((error) => {
       return next({
-        log: 'error in get user',
+        log: 'error in get user data',
         message: {
-          err: 'uhhhohhh',
+          err: 'Error fetching user with subscriptions: ' + error,
           status: 500,
         },
       });
