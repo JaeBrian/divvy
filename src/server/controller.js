@@ -38,6 +38,7 @@ modelController.signup = (req, res, next) => {
     password,
   })
     .then((user) => {
+      res.locals.user = user;
       return next();
     })
     .catch(() => {
