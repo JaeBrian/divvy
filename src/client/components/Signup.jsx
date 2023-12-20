@@ -15,9 +15,15 @@ const Signup = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
   // enter button functionality
-  const handleClick = async (e) => {
-    e.preventDefault();
+  const onSignupClick = async (e) => {
+    // e.preventDefault();
 
     try {
       const response = await fetch('http://localhost:8000/signup', {
@@ -40,6 +46,14 @@ const Signup = () => {
 
       const newUser = await response.json();
       console.log('💖💗💓💘💝💞💕newUser', newUser);
+      navigate('/subdash');
+      dispatch(
+        setLoginInfo({
+          username: username,
+          password: password,
+          loggedIn: true,
+        })
+      );
 
       // need to store newUser variable in redux
     } catch (e) {
@@ -50,60 +64,70 @@ const Signup = () => {
 
   return (
     <div className='mainContainer'>
-      <div className='titleContainer'>Sign Up</div>
-      <div className='nameInputs'>
-        <div className='inputContainer'>
-          <input
-            value={newUserFirstName}
-            placeholder='First Name'
-            onChange={(e) => setNewUserFirstName(e.target.value)}
-            className='inputBox'
-          />
+      <form className='loginForm' onSubmit={handleSubmit(onSignupClick)}>
+        <h1 className='titleContainer'>Sign Up</h1>
+        <div className='nameInputs'>
+          <div className='inputContainer'>
+            <input
+              type='text'
+              name='firstName'
+              placeholder='First Name'
+              {...register('firstName')}
+              onChange={(e) => setNewUserFirstName(e.target.value)}
+              className='inputBox'
+            />
+          </div>
+          <div className='inputContainer'>
+            <input
+              type='text'
+              name='lastName'
+              placeholder='Last Name'
+              {...register('lastName')}
+              onChange={(e) => setNewUserLastName(e.target.value)}
+              className='inputBox'
+            />
+          </div>
         </div>
-        <div className='inputContainer'>
-          <input
-            value={newUserLastName}
-            placeholder='Last Name'
-            onChange={(e) => setNewUserLastName(e.target.value)}
-            className='inputBox'
-          />
+        <div className='userInputs'>
+          <div className='newUserInputContainer'>
+            <input
+              type='text'
+              name='username'
+              placeholder='Username'
+              {...register('username')}
+              onChange={(e) => setNewUsername(e.target.value)}
+              className='newUserInputBox'
+            />
+          </div>
+          <div className='newUserInputContainer'>
+            <input
+              type='text'
+              name='email'
+              placeholder='Email'
+              {...register('email')}
+              onChange={(e) => setNewEmail(e.target.value)}
+              className='newUserInputBox'
+            />
+          </div>
+          <div className='newUserInputContainer'>
+            <input
+              type='password'
+              name='password'
+              placeholder='Password'
+              {...register('password')}
+              onChange={(e) => setNewPassword(e.target.value)}
+              className='newUserInputBox'
+            />
+          </div>
+          <div className='inputContainer'>
+            <Button
+              text='Sign Up'
+              type='submit'
+              className='inputButton'
+            />
+          </div>
         </div>
-      </div>
-      <div className='userInputs'>
-        <div className='newUserInputContainer'>
-          <input
-            value={newUsername}
-            placeholder='Username'
-            onChange={(e) => setNewUsername(e.target.value)}
-            className='newUserInputBox'
-          />
-        </div>
-        <div className='newUserInputContainer'>
-          <input
-            value={newEmail}
-            placeholder='Email'
-            onChange={(e) => setNewEmail(e.target.value)}
-            className='newUserInputBox'
-          />
-        </div>
-        <div className='newUserInputContainer'>
-          <input
-            type='password'
-            value={newPassword}
-            placeholder='Password'
-            onChange={(e) => setNewPassword(e.target.value)}
-            className='newUserInputBox'
-          />
-        </div>
-        <div className='inputContainer'>
-          <Button
-            text='Sign Up'
-            onClick={handleClick}
-            type='submit'
-            className='inputButton'
-          />
-        </div>
-      </div>
+      </form>
     </div>
   );
 };

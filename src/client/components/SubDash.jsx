@@ -23,25 +23,6 @@ const SubDash = () => {
     navigate(path);
   };
   const mockdata = '65826df4ab2cedce32150a15';
-  // useEffect(() => {
-  //   const getUser = async () => {
-  //     try {
-  //       const response = await fetch(
-  //         `http://localhost:8000/getuser/${mockdata}`,
-  //         {
-  //           method: 'GET',
-  //         }
-  //       );
-  //       const res = await response.json();
-
-  //       setSubData(res);
-  //       console.log('resres', res);
-  //     } catch (e) {
-  //       console.log(e);
-  //     }
-  //   };
-  //   getUser();
-  // }, []);
 
   const user = useSelector((state) => state.userSlice.user);
   //const loginid = useelector (state =? state.user.id)
@@ -57,9 +38,6 @@ const SubDash = () => {
       </div>
 
       <div className="card-containers">
-        <SubCard onNavigate={() => handleNavigate('/subcardinfo')} />
-        <SubCard onNavigate={() => handleNavigate('/subcardinfo')} />
-        <SubCard onNavigate={() => handleNavigate('/subcardinfo')} />
         <SubCard onNavigate={() => handleNavigate('/subcardinfo')} />
       </div>
       <button id="profile" onClick={profileClick}>

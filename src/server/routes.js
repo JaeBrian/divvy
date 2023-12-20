@@ -2,7 +2,7 @@ const express = require('express');
 const modelController = require('./controller');
 const router = express.Router();
 
-router.get('/login', modelController.login, (req, res) => {
+router.post('/login', modelController.login, (req, res) => {
   res.status(200).json(res.locals.user);
 });
 
