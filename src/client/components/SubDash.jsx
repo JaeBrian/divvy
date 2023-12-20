@@ -58,9 +58,6 @@ const SubDash = () => {
 
       <div className="card-containers">
         <SubCard onNavigate={() => handleNavigate('/subcardinfo')} />
-        <SubCard onNavigate={() => handleNavigate('/subcardinfo')} />
-        <SubCard onNavigate={() => handleNavigate('/subcardinfo')} />
-        <SubCard onNavigate={() => handleNavigate('/subcardinfo')} />
       </div>
       <button id="profile" onClick={profileClick}>
         Profile

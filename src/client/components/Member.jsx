@@ -2,11 +2,10 @@ import React from 'react';
 import SubDash from './SubDash';
 import { useDispatch, useSelector } from 'react-redux';
 import { toggleHasPaid } from '../state/userSlice';
-const Member = () => {
+
+const Member = ({ handleSwitch, subscriber, hasPaid }) => {
   //still need to fetch the data frmo the databse to check if member has paid is true or false later
   //functionality sort of written still need to access frmo inital state off of fetch
-
-
 
   const dispatch = useDispatch();
   const paid = useSelector((state) => state.userSlice.hasPaid);
@@ -15,6 +14,8 @@ const Member = () => {
     dispatch(toggleHasPaid());
   };
 
+  const user = useSelector((state) => state.userSlice.user);
+
   const border = paid ? 'green' : 'red';
   // "Banner" that shows member's name. Goes in SubDash.jsx
   //find the member if the member has_paid is true render green, if not render red
@@ -22,18 +23,18 @@ const Member = () => {
     <div
       className="member-cards"
       style={{
-        border: `1px solid ${border}`,
+        border: hasPaid ? `1px solid ${border}` : `1px solid red`,
         boxShadow: `0 0 10px 1px ${border}`,
       }}
     >
-      <div id="name">Brian</div>
+      <div id="name">{subscriber}</div>
       <button
         id="paid"
-        onClick={handleToggle}
+        onClick={handleSwitch}
         style={{ border: `2px solid ${border}` }}
       ></button>
     </div>
   );
 };
-
+// <div id="name">Brian</div>
 export default Member;
