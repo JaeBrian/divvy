@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { setIsModalOpen } from '../state/userSlice';
 import Button from '../common/Button';
 import '../styles/Profile.scss';
 
@@ -11,10 +12,14 @@ const user = {
 
 // Profile "Modal" showing username, email, save, and logout
 const Profile = () => {
-  const [isModalOpen, setIsModalOpen] = useState(true);
   const [isEditing, setIsEditing] = useState(false);
   const [editedUsername, setEditedUsername] = useState('');
   const [editedEmail, setEditedEmail] = useState('');
+  const dispatch = useDispatch();
+
+  const handleProfileBackButton = () => {
+    dispatch(setIsModalOpen());
+  };
 
   // need to update with redux states
   // const dispatch = useDispatch();
@@ -55,7 +60,7 @@ const Profile = () => {
   };
 
   const handleBackButton = () => {
-    isEditing ? setIsEditing(false) : setIsModalOpen(false);
+    isEditing ? setIsEditing(false) : handleProfileBackButton();
   };
 
   // 'logout' button handler
@@ -74,8 +79,8 @@ const Profile = () => {
   };
 
   return (
-    isModalOpen && (
-      // need to update with redux states
+    // need to update with redux states
+    <div className="profile-wrapper">
       <div className="profile-container">
         {/* may need to add default/fallback picture to the src */}
         {/* <img
@@ -124,7 +129,7 @@ const Profile = () => {
           className="profile-logout-button"
         />
       </div>
-    )
+    </div>
   );
 };
 
