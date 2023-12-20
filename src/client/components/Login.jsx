@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import Button from '../common/Button';
-import '../styles/Login.scss';
 import { setLoginInfo } from '../state/userSlice';
 import { useDispatch } from 'react-redux';
+import '../styles/Login.scss';
 
 const Login = () => {
   const [username, setUsername] = useState('');

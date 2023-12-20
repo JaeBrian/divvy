@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import Button from '../common/Button';
+import { setLoginInfo } from '../state/userSlice';
+import { useDispatch } from 'react-redux';
 import '../styles/Login.scss';
 
 const Signup = () => {
@@ -10,6 +12,8 @@ const Signup = () => {
   const [newUsername, setNewUsername] = useState('');
   const [newEmail, setNewEmail] = useState('');
   const [newPassword, setNewPassword] = useState('');
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   // enter button functionality
   const handleClick = async (e) => {
