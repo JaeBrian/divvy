@@ -21,10 +21,6 @@ const Profile = () => {
     dispatch(setIsModalOpen());
   };
 
-  // need to update with redux states
-  // const dispatch = useDispatch();
-  // const user = useSelector(selectUser);
-
   // 'save' button handler to allow users to update their info
   const handleSaveButtonClick = async (e) => {
     e.preventDefault();
@@ -36,23 +32,28 @@ const Profile = () => {
       }
 
       // need to update endpoint to update user's existing username and/or email
-      //   const response = await fetch('http://localhost:8000/', {
-      //     method: 'POST',
-      //     headers: {
-      //       'Content-Type': 'application/json',
-      //     },
-      //     body: JSON.stringify(userData),
-      //     // credentials: 'include',
-      //   });
+      // need actual id from redux
+      const id = '65826dace5ece766d3f703ca';
+      const response = await fetch(`http://localhost:8000/editprofile/${id}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ username: editedUsername, email: editedEmail }),
+      });
 
-      //   if (!response.ok) throw new Error('Failed to update user information');
+      // updatedUserInfo - returns updated user object in DB
+      // need to store the updated user info in Redux
+      // const updatedUserInfo = await response.json();
+
+      if (!response.ok) throw new Error('Failed to update user information');
+
+      const res = await response.json();
+      console.log(res);
 
       setIsEditing(false);
       setEditedUsername('');
       setEditedEmail('');
-
-      // update user data
-      // dispatch(updateUser(userData));
     } catch (error) {
       // need to handle eror
       console.log(error);
