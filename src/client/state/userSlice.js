@@ -7,6 +7,7 @@ const initialState = {
     email: null,
   },
   hasPaid: false,
+  modalOpen: false,
 };
 
 export const userSlice = createSlice({
@@ -16,10 +17,13 @@ export const userSlice = createSlice({
     toggleHasPaid: (state) => {
       state.hasPaid = !state.hasPaid;
     },
+    setIsModalOpen: (state) => {
+      state.modalOpen = !state.modalOpen;
+    },
   },
 });
 
-export const { toggleHasPaid } = userSlice.actions;
+export const { toggleHasPaid, setIsModalOpen } = userSlice.actions;
 export default userSlice.reducer;
 
 //export const deconstructed functions here userSlice.actions

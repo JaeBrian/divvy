@@ -5,6 +5,9 @@ import { toggleHasPaid } from '../state/userSlice';
 const Member = () => {
   //still need to fetch the data frmo the databse to check if member has paid is true or false later
   //functionality sort of written still need to access frmo inital state off of fetch
+
+
+
   const dispatch = useDispatch();
   const paid = useSelector((state) => state.userSlice.hasPaid);
 

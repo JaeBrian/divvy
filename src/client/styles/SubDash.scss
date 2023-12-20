@@ -75,3 +75,14 @@
 #paid:hover {
   transform: scale(1.1, 1.1);
 }
+
+#profile {
+  margin-left: auto;
+}
+
+.popup {
+  position: absolute;
+  top: 50px;
+  height: 100px;
+  width: 100px;
+}
