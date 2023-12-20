@@ -1,0 +1,94 @@
+.center-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.subcardinfo-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  height: 100vh;
+  border: 1px solid #ccc;
+  box-shadow: 0 0 10px 1px #48abe0;
+  border-radius: 10px;
+  width: 50vw;
+  height: 60vh;
+}
+
+.subscription-name {
+  font-size: 24px;
+  margin-bottom: 30px;
+}
+
+.info-containers {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  gap: 5%;
+  margin-bottom: 40px;
+
+  .plan-price,
+  .due-date {
+    padding: 10px;
+    border-radius: 5px;
+  }
+}
+
+.members-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 10vw;
+
+  .member-row {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    width: 30vw;
+  }
+
+  .add-member-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    width: 30vw;
+  }
+}
+
+.modal {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  input {
+    margin: 10px 0;
+    padding: 8px;
+    width: 80%;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+
+  button {
+    padding: 8px 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #48abe0;
+    color: white;
+  }
+}
