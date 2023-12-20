@@ -37,7 +37,7 @@ const initialState = {
     password: null,
     subscriptions: [],
   },
-  hasPaid: false,
+  // hasPaid: false,
   modalOpen: false,
 };
 
@@ -54,6 +54,10 @@ export const userSlice = createSlice({
     setLoginInfo: (state) => {
       state.login = action.payload;
     },
+    // swapHasPaid: (state) => {
+    //   state.user.subscriptions.subscribers.hasPaid =
+    //     !state.user.subscriptions.subscribers.hasPaid;
+    // },
   },
   extraReducers: (builder) => {
     builder
@@ -72,7 +76,7 @@ export const userSlice = createSlice({
   },
 });
 
-export const { toggleHasPaid, setIsModalOpen } = userSlice.actions;
+export const { toggleHasPaid, setIsModalOpen, swapHasPaid } = userSlice.actions;
 export default userSlice.reducer;
 
 //export const deconstructed functions here userSlice.actions
