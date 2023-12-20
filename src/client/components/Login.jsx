@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Button from '../common/Button';
 import '../styles/Login.scss';
 
 const Login = () => {
@@ -53,22 +54,22 @@ const Login = () => {
         <label className='errorLabel'>{passwordError}</label>
       </div>
       <div className='inputContainer'>
-        <input
-          className='inputButton'
-          type='button'
+          <Button
+          text='Login'
           onClick={onLoginClick}
-          value='Login'
+          type='submit'
+          className='inputButton'
         />
       </div>
       <div className='footerContainer'>
         <div className='footerText'>
           Forgot password
         </div>
-        <input
-          className='inputButton'
-          type='button'
+          <Button
+          text='Sign Up'
           onClick={onSignupClick}
-          value='Signup'
+          type='submit'
+          className='inputButton'
         />
       </div>
     </div>

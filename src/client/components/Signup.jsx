@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Button from '../common/Button';
 import '../styles/Login.scss';
 
 const Signup = () => {
@@ -61,11 +62,11 @@ const Signup = () => {
             />
           </div>
           <div className='inputContainer'>
-            <input
-              className='inputButton'
-              type='button'
-              onClick={handleClick}
-              value='Signup'
+            <Button
+            text='Sign Up'
+            onClick={handleClick}
+            type='submit'
+            className='inputButton'
             />
           </div>
         </div>
