@@ -3,17 +3,13 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import Member from './Member';
 import { useDispatch, useSelector } from 'react-redux';
-import { toggleHasPaid } from '../state/userSlice';
+import { toggleHasPaid, swapHasPaid } from '../state/userSlice';
 
 const SubCard = ({ onNavigate }) => {
   const dispatch = useDispatch();
 
-  // const handleSwitch = () => {
-  //   dispatch(swapHasPaid());
-  // };
-
   const user = useSelector((state) => state.userSlice.user);
-  console.log('fromsubuser', user);
+  // console.log('fromsubuser', user);
 
   return (
     <div className="subcard-container">
@@ -26,8 +22,18 @@ const SubCard = ({ onNavigate }) => {
             {subscription.subscribers.map((subscriber) => {
               return (
                 <Member
+                  key={subscriber._id}
+                  subscriptionId={subscription._id}
+                  subscriberIds={subscriber._id}
                   hasPaid={subscriber.hasPaid}
-                  // handleSwitch={handleSwitch}
+                  handleSwitch={() =>
+                    dispatch(
+                      swapHasPaid({
+                        subscriptionId: subscription._id,
+                        subscriberId: subscriber._id,
+                      })
+                    )
+                  }
                   subscriber={subscriber.username}
                 />
               );
@@ -36,10 +42,6 @@ const SubCard = ({ onNavigate }) => {
         ))}
     </div>
   );
-
-  // <Member />
-  // <Member />
-  // <Member />
 };
 
 export default SubCard;

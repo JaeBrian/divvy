@@ -54,10 +54,18 @@ export const userSlice = createSlice({
     setLoginInfo: (state) => {
       state.login = action.payload;
     },
-    // swapHasPaid: (state) => {
-    //   state.user.subscriptions.subscribers.hasPaid =
-    //     !state.user.subscriptions.subscribers.hasPaid;
-    // },
+    swapHasPaid: (state, action) => {
+      const { subscriptionId, subscriberId } = action.payload;
+      const subscription = state.user.subscriptions.find(
+        (sub) => sub._id === subscriptionId
+      );
+      const subscriber = subscription?.subscribers.find(
+        (sub) => sub._id === subscriberId
+      );
+      if (subscriber) {
+        subscriber.hasPaid = !subscriber.hasPaid;
+      }
+    },
   },
   extraReducers: (builder) => {
     builder
