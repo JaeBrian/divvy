@@ -10,8 +10,10 @@
 }
 
 .titleContainer {
-  font-size: 20px;
+  text-align: center;
+  font-size: 25px;
   font-weight: 600;
+  margin-bottom: 15px;
 }
 
 .inputContainer {
@@ -42,6 +44,7 @@
   margin-top: auto;
   margin-bottom: auto;
   font-weight: 600;
+  font-size: 12px;
   text-decoration: underline;
   cursor: pointer;
 }
@@ -57,9 +60,12 @@
 .userInputs {
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
 .newUserInputContainer {
+  display: flex;
+  justify-content: center;
   width: 100%;
 }
 
