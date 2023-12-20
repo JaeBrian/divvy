@@ -26,7 +26,7 @@ const Login = () => {
   };
 
   const onSignupClick = () => {
-    // take user to Signup.jsx
+    navigate('/signup');
   }
 
   return (
