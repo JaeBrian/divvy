@@ -26,16 +26,20 @@ router.post('/editprofile/:id', modelController.editProfile, (req, res) =>
 );
 
 router.get('/getsubscription', modelController.getSubscription, (req, res) =>
-  res.status(200).json({})
+  res.status(200).json(res.locals.updatedSub)
 );
 
-router.get('/getsubname/:id', modelController.returnSubscription, (req, res) => {
-  res.status(200).json(res.locals.data)
-})
+router.get(
+  '/getsubname/:id',
+  modelController.returnSubscription,
+  (req, res) => {
+    res.status(200).json(res.locals.data);
+  }
+);
 
 router.get('/getmembername/:id', modelController.returnMember, (req, res) => {
-  res.status(200).json(res.locals.data)
-})
+  res.status(200).json(res.locals.data);
+});
 
 router.post(
   '/addsubscription/:id',

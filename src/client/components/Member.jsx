@@ -13,9 +13,7 @@ const Member = ({
   //still need to fetch the data frmo the databse to check if member has paid is true or false later
   //functionality sort of written still need to access frmo inital state off of fetch
 
-
   const userPay = useSelector((state) => state.userSlice.user);
-  console.log('userpay', userPay.subscriptions.subscribers);
 
   const border = hasPaid ? 'green' : 'red';
   // "Banner" that shows member's name. Goes in SubDash.jsx

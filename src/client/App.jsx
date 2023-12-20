@@ -34,7 +34,6 @@ const App = () => {
           element={<SubCardInfo {...mockSubCardInfo} />}
         />
         <Route path="/profile" element={<Profile />} />
-        <Route path="/subcardinfo" element={<SubCardInfo />} />
         <Route path="/selectplan" element={<SelectPlan />} />
       </Routes>
     </Router>
