@@ -4,23 +4,26 @@ import '../styles/CustomPlan.scss';
 
 // Users redirected to this page when they choose "CUSTOM" option in SelectPlan.jsx
 const CustomPlan = () => {
-  const [subscriptionName, setSubscriptionName] = useState('');
+  const [planName, setPlanName] = useState('');
   const [monthlyCost, setMonthlyCost] = useState('');
 
-  // need logic to store in the database
   const handleFormSubmit = async (e) => {
     e.preventDefault();
 
     try {
       // need to update endpoint to store user's custom plan to the database
-      const response = await fetch('http://localhost:8000/', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({}),
-        // credentials: 'include',
-      });
+      // need actual id from redux
+      const id = '65826dace5ece766d3f703ca';
+      const response = await fetch(
+        `http://localhost:8000/addsubscription/${id}`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ planName, monthlyCost }),
+        }
+      );
     } catch (error) {
       // need to handle eror
       console.log(error);
@@ -32,13 +35,13 @@ const CustomPlan = () => {
       <h1>Add a Subscription</h1>
       <form onSubmit={handleFormSubmit} className="custom-plan-form">
         <div className="form-group">
-          <label htmlFor="subscriptionName">Subscription Name: </label>
+          <label htmlFor="planName">Subscription Name: </label>
           <input
             type="text"
-            id="subscriptionName"
-            name="subscriptionName"
-            value={subscriptionName}
-            onChange={(e) => setSubscriptionName(e.target.value)}
+            id="planName"
+            name="planName"
+            value={planName}
+            onChange={(e) => setPlanName(e.target.value)}
             placeholder="Subscription Name"
             className="input-custom-plan"
           />

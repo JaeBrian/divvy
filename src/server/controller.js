@@ -55,7 +55,7 @@ modelController.editProfile = (req, res, next) => {
   const { id } = req.params;
   const { username, email } = req.body;
 
-  models.User.findByIdAndUpdate(id, { username, email })
+  models.User.findByIdAndUpdate(id, { username, email }, { new: true })
     .then((user) => {
       res.status(200).json({ message: 'Profile updated successfully', user });
     })
