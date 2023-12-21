@@ -72,42 +72,44 @@ const Login = () => {
   };
 
   return (
-    <div className='mainContainer'>
-      <form className='loginForm' onSubmit={handleSubmit(onLoginClick)}>
-        <h1 className='titleContainer'>Login</h1>
-        <div className='inputContainer'>
+    <div className="mainContainer">
+      <form className="loginForm" onSubmit={handleSubmit(onLoginClick)}>
+        <h1 className="titleContainer">Login</h1>
+        <div className="inputContainer">
           <input
-            type='text'
-            name='username'
-            placeholder='Enter your username'
+            type="text"
+            name="username"
+            placeholder="Enter your username"
             {...register('username')}
             onChange={(e) => setUsername(e.target.value)}
-            className='inputBox'
+            className="inputBox"
           />
-          <label className='errorLabel'>{usernameError}</label>
+          <label className="errorLabel">{usernameError}</label>
         </div>
-        <div className='inputContainer'>
+        <div className="inputContainer">
           <input
-            type='password'
-            name='password'
-            placeholder='Enter your password'
+            type="password"
+            name="password"
+            placeholder="Enter your password"
             {...register('password')}
             onChange={(e) => setPassword(e.target.value)}
-            className='inputBox'
+            className="inputBox"
           />
-          <label className='errorLabel'>{passwordError}</label>
+          <label className="errorLabel">{passwordError}</label>
         </div>
-        <div className='inputContainer'>
-          <Button text='Login' type='submit' className='inputButton' />
+        <div className="forgotPassword">
+          <span className="footerText">Forgot password?</span>
+        </div>
+        <div className="inputContainer">
+          <Button text="Login" type="submit" className="inputButton" />
         </div>
       </form>
-      <div className='footerContainer'>
-        <div className='footerText'>Forgot password</div>
+      <div className="footerContainer">
         <Button
-          text='Sign Up'
+          text="Sign Up"
           onClick={onSignupClick}
-          type='submit'
-          className='inputButton'
+          type="submit"
+          className="inputButton"
         />
       </div>
     </div>
