@@ -46,9 +46,7 @@
     }
 
     button:hover {
-      border: 1px solid #f8c8dc;
-      color: #f8c8dc;
-      background-color: #fff;
+      box-shadow: 0 0 10px 5px #48abe0;
       transform: scale(1.1);
     }
   }
