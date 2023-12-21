@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import Button from '../common/Button';
+import { useNavigate } from 'react-router-dom';
 import '../styles/CustomPlan.scss';
 
 // Users redirected to this page when they choose "CUSTOM" option in SelectPlan.jsx
 const CustomPlan = () => {
   const [planName, setPlanName] = useState('');
   const [monthlyCost, setMonthlyCost] = useState('');
+  const navigate = useNavigate();
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
@@ -24,6 +26,7 @@ const CustomPlan = () => {
           body: JSON.stringify({ planName, monthlyCost }),
         }
       );
+      navigate('/subdash');
     } catch (error) {
       // need to handle eror
       console.log(error);

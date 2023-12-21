@@ -46,7 +46,7 @@ const Signup = () => {
 
       const newUser = await response.json();
       console.log('💖💗💓💘💝💞💕newUser', newUser);
-      navigate('/subdash');
+      navigate('/selectplan');
       dispatch(
         setLoginInfo({
           username: username,
@@ -63,68 +63,64 @@ const Signup = () => {
   };
 
   return (
-    <div className='mainContainer'>
-      <form className='loginForm' onSubmit={handleSubmit(onSignupClick)}>
-        <h1 className='titleContainer'>Sign Up</h1>
-        <div className='nameInputs'>
-          <div className='inputContainer'>
+    <div className="mainContainer">
+      <form className="loginForm" onSubmit={handleSubmit(onSignupClick)}>
+        <h1 className="titleContainer">Sign Up</h1>
+        <div className="nameInputs">
+          <div className="inputContainer">
             <input
-              type='text'
-              name='firstName'
-              placeholder='First Name'
+              type="text"
+              name="firstName"
+              placeholder="First Name"
               {...register('firstName')}
               onChange={(e) => setNewUserFirstName(e.target.value)}
-              className='inputBox'
+              className="inputBox"
             />
           </div>
-          <div className='inputContainer'>
+          <div className="inputContainer">
             <input
-              type='text'
-              name='lastName'
-              placeholder='Last Name'
+              type="text"
+              name="lastName"
+              placeholder="Last Name"
               {...register('lastName')}
               onChange={(e) => setNewUserLastName(e.target.value)}
-              className='inputBox'
+              className="inputBox"
             />
           </div>
         </div>
-        <div className='userInputs'>
-          <div className='newUserInputContainer'>
+        <div className="userInputs">
+          <div className="newUserInputContainer">
             <input
-              type='text'
-              name='username'
-              placeholder='Username'
+              type="text"
+              name="username"
+              placeholder="Username"
               {...register('username')}
               onChange={(e) => setNewUsername(e.target.value)}
-              className='newUserInputBox'
+              className="newUserInputBox"
             />
           </div>
-          <div className='newUserInputContainer'>
+          <div className="newUserInputContainer">
             <input
-              type='text'
-              name='email'
-              placeholder='Email'
+              type="text"
+              name="email"
+              placeholder="Email"
               {...register('email')}
               onChange={(e) => setNewEmail(e.target.value)}
-              className='newUserInputBox'
+              className="newUserInputBox"
             />
           </div>
-          <div className='newUserInputContainer'>
+          <div className="newUserInputContainer">
             <input
-              type='password'
-              name='password'
-              placeholder='Password'
+              type="password"
+              name="password"
+              placeholder="Password"
               {...register('password')}
               onChange={(e) => setNewPassword(e.target.value)}
-              className='newUserInputBox'
+              className="newUserInputBox"
             />
           </div>
-          <div className='inputContainer'>
-            <Button
-              text='Sign Up'
-              type='submit'
-              className='inputButton'
-            />
+          <div className="inputContainer">
+            <Button text="Sign Up" type="submit" className="inputButton" />
           </div>
         </div>
       </form>
