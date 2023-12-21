@@ -3,11 +3,12 @@ import { useSelector, useDispatch } from 'react-redux';
 import { setIsModalOpen } from '../state/userSlice';
 import Button from '../common/Button';
 import '../styles/Profile.scss';
+import { useNavigate } from 'react-router-dom';
 
 // mock user for testing. delete in mvp
 const user = {
-  username: 'kay',
-  email: 'kay@kay.com',
+  username: 'brian',
+  email: 'b@brian.com',
 };
 
 // Profile "Modal" showing username, email, save, and logout
@@ -64,19 +65,10 @@ const Profile = () => {
     isEditing ? setIsEditing(false) : handleProfileBackButton();
   };
 
+  const navigate = useNavigate();
   // 'logout' button handler
   const handleLogout = async () => {
-    // do we need logout route in backend?
-    // if yes, update route
-    const response = await fetch('http://localhost:8000/', {
-      method: 'POST',
-      // credentials: 'include',
-    });
-
-    if (!response.ok) throw new Error('Failed to logout');
-
-    // clear Redux state
-    // dispatch(logoutUser());
+    navigate('/');
   };
 
   return (
