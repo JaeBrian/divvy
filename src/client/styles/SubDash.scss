@@ -19,6 +19,7 @@
   font-size: 5vw;
   font-weight: 600;
   color: aliceblue;
+  text-shadow: 3px 3px 5px rgba(90, 43, 199, 1),0px 2px 25px rgba(90, 43, 199, 0.96);
   margin-bottom: 3vh;
 }
 
@@ -42,7 +43,7 @@
   line-height: 10vh;
   flex-direction: column;
   justify-content: start;
-  box-shadow: 0 0 15px 1px #4a2992;
+  box-shadow: 3px 3px 10px rgba(90, 43, 199, 0.65);
   gap: 1.5vh;
   transition: transform 0.2s ease-in-out;
 }
@@ -53,6 +54,9 @@
 
 .company {
   cursor: pointer;
+  font-size: 25px;
+  color: aliceblue;
+  text-shadow: 3px 3px 5px rgba(90, 43, 199, 1),0px 2px 25px rgba(90, 43, 199, 0.96);
 }
 
 .member-cards {
@@ -71,6 +75,9 @@
 #name {
   font-size: 65%;
   margin-left: 1vw;
+  max-height: 100%;
+  overflow-y: auto;
+  line-height: 25px;
 }
 
 #paid {

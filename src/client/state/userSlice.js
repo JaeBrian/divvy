@@ -13,24 +13,17 @@ export const fetchUser = createAsyncThunk(
   }
 );
 
-// export const fetchLogin = createAsyncThunk(
-//   'login/fetchUser',
-//   async (username, thunkAPI) => {
-//     try {
-//       const respone = await fetch('http://localhost:8000/login/${username}');
-//       const data = await response.json();
-//       return data;
-//     } catch (error) {
-//       return thunkAPI.rejectWithValue(error);
-//     }
-//   }
-// );
-
 const initialState = {
   login: {
     username: null,
     password: null,
     loggedIn: false,
+  },
+  subscription: {
+    _id: null,
+    monthlyCost: null,
+    planName: null,
+    subscribers: [],
   },
   user: {
     _id: null,
@@ -41,7 +34,7 @@ const initialState = {
     password: null,
     subscriptions: [],
   },
-  // hasPaid: false,
+
   modalOpen: false,
 };
 
@@ -70,6 +63,9 @@ export const userSlice = createSlice({
         subscriber.hasPaid = !subscriber.hasPaid;
       }
     },
+    setSubscriptionData: (state, action) => {
+      state.subscription = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -88,8 +84,13 @@ export const userSlice = createSlice({
   },
 });
 
-export const { toggleHasPaid, setIsModalOpen, setLoginInfo, swapHasPaid } =
-  userSlice.actions;
+export const {
+  toggleHasPaid,
+  setIsModalOpen,
+  setLoginInfo,
+  swapHasPaid,
+  setSubscriptionData,
+} = userSlice.actions;
 export default userSlice.reducer;
 
 //export const deconstructed functions here userSlice.actions

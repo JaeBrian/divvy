@@ -53,7 +53,7 @@ modelController.signup = (req, res, next) => {
 };
 
 modelController.editProfile = (req, res, next) => {
-  const { id } = req.params;
+  const { id } = req.query;
   const { username, email } = req.body;
 
   models.User.findByIdAndUpdate(id, { username, email }, { new: true })
@@ -93,7 +93,7 @@ modelController.getUser = (req, res, next) => {
 //   x      v
 // user -> subs -> members
 modelController.getSubscription = (req, res, next) => {
-  const { _id } = req.query;
+  const { _id } = req.params;
   const { username } = req.body;
 
   models.Member.create({ username })
@@ -146,13 +146,14 @@ modelController.addSubscription = (req, res, next) => {
     });
 };
 
-modelController.returnSubscription = () => {
-  const { id } = req.query;
+modelController.returnSubscription = (req, res, next) => {
+  const { id } = req.params;
 
   models.Subscription.findById(id)
-
+    .populate('subscribers')
+    .exec()
     .then((data) => {
-      res.locals.data = data.planName;
+      res.locals.data = data;
       return next();
     })
 

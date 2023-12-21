@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 import '../styles/SubCardInfo.scss';
 
 const SubCardInfo = ({ subscriptionName, planPrice, dueDate, members }) => {
@@ -27,18 +28,25 @@ const SubCardInfo = ({ subscriptionName, planPrice, dueDate, members }) => {
     }
   };
 
+  const needData = useSelector((state) => state.userSlice.subscription);
+  console.log('HELLOHERE', needData);
+  console.log('HELLOHEREMONTLYCOST', needData.monthlyCost);
+  const avgCost = parseFloat(
+    needData.monthlyCost / needData.subscribers.length
+  ).toFixed(2);
+
   return (
     <div className="center-wrapper">
       <div className="subcardinfo-container">
-        <div className="subscription-name">{subscriptionName}</div>
+        <div className="subscription-name">{needData.planName}</div>
         <div className="info-containers">
-          <div className="plan-price">Price: {planPrice}</div>
+          <div className="plan-price">Price: ${needData.monthlyCost}</div>
           <div className="due-date">Due: {dueDate}</div>
         </div>
         <div className="members-list">
-          {memberList.map((member, index) => (
+          {needData.subscribers.map((member, index) => (
             <div key={index} className="member-row">
-              {member.name}
+              {member.username} <span>${avgCost}</span>
             </div>
           ))}
           <div className="add-member-row" onClick={openModal}>
