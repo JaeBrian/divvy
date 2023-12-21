@@ -15,7 +15,8 @@
   align-items: center;
   margin-bottom: 2vh;
   font-size: 20px;
-  font-weight: 600;
+  font-weight: 200;
+  margin-bottom: 15px;
 }
 
 .inputContainer {
@@ -28,26 +29,34 @@
   margin: 5px;
   border-radius: 5px;
   border-color: white;
+  border-width: 1px;
+  margin-bottom: 5px;
 }
 
 .inputButton {
   padding: 5px 10px;
   border-radius: 5px;
   margin: 5px;
+
+  &:hover {
+    background-color: #9f9f9f;
+  }
 }
 
 .footerContainer {
   display: flex;
-  margin-top: 15px;
+  margin-top: 10px;
 }
 
 .footerText {
   text-align: center;
   margin-top: auto;
   margin-bottom: auto;
-  font-weight: 600;
+  font-size: 14px;
+  font-weight: normal;
   text-decoration: underline;
   cursor: pointer;
+  color: #737373;
 }
 
 // Styling for Signup page
@@ -71,6 +80,12 @@
   width: 97%;
   border-radius: 5px;
   border-color: white;
+}
+
+.forgotPassword {
+  text-align: center;
+  margin: 5px;
+  margin-top: 10px;
 }
 
 .inputButton {
