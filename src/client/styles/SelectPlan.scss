@@ -21,22 +21,26 @@
 #netflix {
   height: 25vh;
   transition: transform 0.15s ease-in-out;
+  cursor: pointer;
 }
 
 #disney {
   height: 25vh;
   transition: transform 0.15s ease-in-out;
+  cursor: pointer;
 }
 
 #crunchy {
   height: 28vh;
   transition: transform 0.15s ease-in-out;
+  cursor: pointer;
 }
 
 #custom {
   font-size: 9vh;
   color: greenyellow;
   transition: transform 0.15s ease-in-out;
+  cursor: pointer;
 }
 
 #netflix:hover,

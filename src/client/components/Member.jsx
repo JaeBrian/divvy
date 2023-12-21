@@ -15,7 +15,7 @@ const Member = ({
 
   const userPay = useSelector((state) => state.userSlice.user);
 
-  const border = hasPaid ? 'green' : 'red';
+  const border = hasPaid ? 'rgba(59, 179, 203, 0.758)' : 'rgba(156, 28, 83, 0.758)';
   // "Banner" that shows member's name. Goes in SubDash.jsx
   //find the member if the member has_paid is true render green, if not render red
   return (
@@ -23,7 +23,7 @@ const Member = ({
       className="member-cards"
       style={{
         border: `1px solid ${border}`,
-        boxShadow: `0 0 10px 1px ${border}`,
+        boxShadow: `0 0 5px 1px ${border}`,
       }}
     >
       <div id="name">{subscriber}</div>

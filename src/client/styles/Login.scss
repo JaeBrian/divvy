@@ -68,9 +68,12 @@
 .userInputs {
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
 .newUserInputContainer {
+  display: flex;
+  justify-content: center;
   width: 100%;
 }
 

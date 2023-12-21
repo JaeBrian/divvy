@@ -72,10 +72,10 @@ const Login = () => {
   };
 
   return (
-    <div className="mainContainer">
-      <form className="loginForm" onSubmit={handleSubmit(onLoginClick)}>
-        <h1 className="titleContainer">Login</h1>
-        <div className="inputContainer">
+    <div className='mainContainer'>
+      <form className='loginForm' onSubmit={handleSubmit(onLoginClick)}>
+        <h1 className='titleContainer'>Divvy</h1>
+        <div className='inputContainer'>
           <input
             type="text"
             name="username"
