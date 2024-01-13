@@ -8,6 +8,7 @@ import AddSub from './components/AddSub';
 import Profile from './components/Profile';
 import SubCardInfo from './components/SubCardInfo';
 import SelectPlan from './components/SelectPlan';
+import './styles.css';
 
 const App = () => {
   const mockSubCardInfo = {

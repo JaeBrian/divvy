@@ -1,4 +1,4 @@
-import '../styles/SubDash.scss';
+import '../styles.css';
 import React from 'react';
 import { useState, useEffect } from 'react';
 import Member from './Member';

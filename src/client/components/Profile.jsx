@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { setIsModalOpen } from '../state/userSlice';
 import Button from '../common/Button';
-import '../styles/Profile.scss';
+import '../styles.css';
 import { useNavigate } from 'react-router-dom';
 
 // mock user for testing. delete in mvp

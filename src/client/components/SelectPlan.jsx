@@ -1,5 +1,5 @@
 import React from 'react';
-import '../styles/SelectPlan.scss';
+import '../styles.css';
 import netflixImage from '../assets/Netflix.png';
 import disney from '../assets/disney+.png';
 import crunchy from '../assets/crunchy.png';

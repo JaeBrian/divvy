@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Button from '../common/Button';
 import { useNavigate } from 'react-router-dom';
-import '../styles/CustomPlan.scss';
+import '../styles.css';
 
 // Users redirected to this page when they choose "CUSTOM" option in SelectPlan.jsx
 const CustomPlan = () => {
