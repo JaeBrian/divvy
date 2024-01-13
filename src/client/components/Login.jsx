@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import Button from '../common/Button';
 import { setLoginInfo } from '../state/userSlice';
 import { useDispatch } from 'react-redux';
-import '../styles/Login.scss';
+import '../styles.css';
 
 const Login = () => {
   const [username, setUsername] = useState('');
@@ -72,10 +72,10 @@ const Login = () => {
   };
 
   return (
-    <div className='mainContainer'>
-      <form className='loginForm' onSubmit={handleSubmit(onLoginClick)}>
-        <h1 className='titleContainer'>Divvy</h1>
-        <div className='inputContainer'>
+    <div className="mainContainer">
+      <form className="loginForm" onSubmit={handleSubmit(onLoginClick)}>
+        <h1 className="titleContainer">Divvy</h1>
+        <div className="inputContainer">
           <input
             type="text"
             name="username"
@@ -98,20 +98,24 @@ const Login = () => {
           <label className="errorLabel">{passwordError}</label>
         </div>
         <div className="forgotPassword">
-          <span className="footerText">Forgot password?</span>
+          <span class="footerText">Forgot password?</span>
         </div>
         <div className="inputContainer">
-          <Button text="Login" type="submit" className="inputButton" />
+          <Button
+            text="Login"
+            type="submit"
+            className="border border-white px-3 py-2"
+          />
+        </div>
+        <div className="flex items-center justify-center">
+          <Button
+            text="Sign Up"
+            onClick={onSignupClick}
+            type="submit"
+            className="border border-white w-full px-3 py-2"
+          />
         </div>
       </form>
-      <div className="footerContainer">
-        <Button
-          text="Sign Up"
-          onClick={onSignupClick}
-          type="submit"
-          className="inputButton"
-        />
-      </div>
     </div>
   );
 };

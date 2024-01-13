@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
-import '../styles/SubCardInfo.scss';
+import '../styles.css';
 
 const SubCardInfo = ({ subscriptionName, planPrice, dueDate, members }) => {
   const [memberList, setMemberList] = useState(members);

@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import Button from '../common/Button';
 import { setLoginInfo } from '../state/userSlice';
 import { useDispatch } from 'react-redux';
-import '../styles/Login.scss';
+import '../styles.css';
 
 const Signup = () => {
   const [newUserFirstName, setNewUserFirstName] = useState('');

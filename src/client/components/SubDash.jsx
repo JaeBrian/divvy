@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import SubCard from './SubCard';
-import '../styles/SubDash.scss';
+import '../styles.css';
 import { useNavigate } from 'react-router-dom';
 import Profile from './Profile';
 import { useDispatch, useSelector } from 'react-redux';
