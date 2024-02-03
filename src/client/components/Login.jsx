@@ -1,10 +1,15 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import Button from '../common/Button';
 import { setLoginInfo } from '../state/userSlice';
 import { useDispatch } from 'react-redux';
+import { GoogleLogin, GoogleLogout } from '@leecheuk/react-google-login';
+import { gapi } from 'gapi-script';
 import '../styles.css';
+
+const clientId =
+  '716839651700-flg46f5pn332pmluje3e3i692m795he7.apps.googleusercontent.com';
 
 const Login = () => {
   const [username, setUsername] = useState('');
@@ -18,6 +23,26 @@ const Login = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
+
+  useEffect(() => {
+    function start() {
+      gapi.client.init({
+        clientId: clientId,
+        scope: '',
+      });
+    }
+    gapi.load('client:auth2', start);
+  });
+
+  // var accessToken = gapi.auth.getToken().access_token;
+
+  const onSuccess = (res) => {
+    console.log('success', res.profileObj);
+  };
+
+  const onFailure = (res) => {
+    console.log('failed', res);
+  };
 
   const onLoginClick = async (data) => {
     //auth if user exists in db
@@ -116,6 +141,23 @@ const Login = () => {
           />
         </div>
       </form>
+      {/* <div id="signInButton">
+        <GoogleLogin
+          clientId={clientId}
+          buttonText="Login"
+          onSuccess={onSuccess}
+          onFailure={onFailure}
+          cookiePolicy={'single_host_origin'}
+          isSignedIn={true}
+        />
+      </div>
+      <div id="signoutButton">
+        <GoogleLogout
+          clientId={clientId}
+          buttonText={'Logout'}
+          onLogoutSuccess={onSuccess}
+        />
+      </div> */}
     </div>
   );
 };
